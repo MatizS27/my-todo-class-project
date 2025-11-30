@@ -39,6 +39,16 @@ export default tseslint.config([
 ])
 ```
 
+## Sentry (captura de errores)
+
+Para habilitar la captura de errores con Sentry, añade la variable de entorno `VITE_SENTRY_DSN` con tu DSN de Sentry antes de iniciar la aplicación. Ejemplo (Linux/macOS):
+
+```bash
+export VITE_SENTRY_DSN="https://<public>@o0.ingest.sentry.io/0"
+npm run dev
+```
+
+La inicialización se realiza automáticamente en el arranque y se captura `window.onerror` y `unhandledrejection`. Además la app está envuelta en un `ErrorBoundary` de Sentry.
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js
