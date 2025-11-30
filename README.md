@@ -49,6 +49,17 @@ npm run dev
 ```
 
 La inicialización se realiza automáticamente en el arranque y se captura `window.onerror` y `unhandledrejection`. Además la app está envuelta en un `ErrorBoundary` de Sentry.
+
+## Google Analytics 4
+
+Para habilitar el seguimiento de analíticas, añade la variable de entorno `VITE_GA_MEASUREMENT_ID` con tu ID de medición de GA4 (formato `G-XXXXXXXXXX`).
+
+```bash
+export VITE_GA_MEASUREMENT_ID="G-XXXXXXXXXX"
+npm run dev
+```
+
+La aplicación rastreará automáticamente las "vistas de página" virtuales cuando el usuario inicie o cierre sesión (`/public` vs `/private`).
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js
