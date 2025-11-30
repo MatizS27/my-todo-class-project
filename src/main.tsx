@@ -6,7 +6,7 @@ import SentryErrorBoundary from './components/ErrorBoundary'
 
 // Inicializa Sentry (usa VITE_SENTRY_DSN si está configurado)
 initSentry()
-// Inicializa Google Analytics (usa VITE_GA_MEASUREMENT_ID si está configurado)
+// Inicializa Google Analytics (usa VITE_FIREBASE_MEASUREMENT_ID si está configurado)
 initAnalytics()
 
 createRoot(document.getElementById('root')!).render(
