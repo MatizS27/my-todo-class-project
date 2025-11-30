@@ -51,10 +51,16 @@ export const useTodo = () => {
         const fetchTodos = async () => {
             try {
                 const data = await todoApi.getTodos();
-                setTodos(data);
+                if (Array.isArray(data)) {
+                    setTodos(data);
+                } else {
+                    console.error('API response is not an array:', data);
+                    setTodos([]);
+                }
             } catch (error) {
                 console.error('Error fetching todos:', error);
-                throw error;
+                // No re-lanzamos el error para evitar que explote la UI
+                setTodos([]); 
             }
         };
 

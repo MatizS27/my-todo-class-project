@@ -15,22 +15,14 @@ export const initAnalytics = () => {
   };
 
   // Initialize Firebase
-  if (firebaseConfig.apiKey) {
-    try {
-      const app = initializeApp(firebaseConfig);
-      
-      // Initialize Analytics
-      if (firebaseConfig.measurementId) {
-        analytics = getAnalytics(app);
-        console.log("Firebase Analytics initialized");
-      } else {
-        console.warn("Firebase Measurement ID not found");
-      }
-    } catch (error) {
-      console.error("Error initializing Firebase:", error);
-    }
+  const app = initializeApp(firebaseConfig);
+  
+  // Initialize Analytics
+  if (firebaseConfig.measurementId) {
+    analytics = getAnalytics(app);
+    console.log("Firebase Analytics initialized");
   } else {
-    console.warn("Firebase API Key not found. Analytics disabled.");
+    console.warn("Firebase Measurement ID not found");
   }
 };
 
