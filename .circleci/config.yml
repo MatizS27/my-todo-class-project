@@ -2,7 +2,6 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.2
-  aws-cli: circleci/aws-cli@4.1.1
 
 jobs:
   test:
@@ -25,14 +24,12 @@ jobs:
       - checkout
       - node/install-packages:
           pkg-manager: npm
-      - aws-cli/setup
       - run:
           name: Build project
           command: npm run build
       - run:
-          name: Deploy to S3
-          command: |
-            aws s3 sync ./dist s3://todo-2025-fep-uninorte/ --delete --acl public-read
+          name: Deploy to Firebase
+          command: npx firebase-tools@13.29.1 deploy --token "$FIREBASE_TOKEN" --only hosting
 
 workflows:
   test_and_deploy:
