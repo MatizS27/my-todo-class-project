@@ -30,16 +30,21 @@ export const useTodo = () => {
 
     const markAsDone = async (id: string) => {
         try {
+            const todo = todos.find(t => t._id === id);
+            if (!todo) return;
+            
             const updatedAt = new Date().toISOString();
+            const newDoneState = !todo.done;
+            
             await todoApi.updateTodo(id, {
-                done: true,
+                done: newDoneState,
                 updatedAt
             });
             
-            setTodos(todos.map(todo => 
-                todo._id === id 
-                    ? { ...todo, done: true, updatedAt } 
-                    : todo
+            setTodos(todos.map(t => 
+                t._id === id 
+                    ? { ...t, done: newDoneState, updatedAt } 
+                    : t
             ));
         } catch (error) {
             console.error('Error marking todo as done:', error);
